@@ -1,0 +1,17 @@
+footer{
+    background-color: #D6CCCC;
+    /* background-color: black; */
+}
+.footer__inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.menu__list{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--monts);
+    font-size: 14px;
+}

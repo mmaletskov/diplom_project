@@ -1,0 +1,23 @@
+.catalog{
+    width: 100%;
+    font-family: var(--monts);
+}
+.nav__panel{
+    display: flex;
+    justify-content: space-between;
+}
+.nav__links{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav__link{
+    padding: 10px 20px;
+    background-color: #498EB5;
+    color: white;
+}
+.nav__search,.nav__search:focus{
+    outline: none;
+    border: none;
+    padding: 0 15px;
+}

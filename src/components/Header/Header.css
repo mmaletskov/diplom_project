@@ -1,0 +1,37 @@
+header{
+    margin: 20px 0;
+}
+.header__inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.burger__btn{
+    width: 44px;
+    height: 24px;
+}
+.header__menu{
+    display: none;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background-color: black;
+    z-index: 9;
+    color: white;
+    padding: 100px 0;
+}
+.active{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: var(--monts);
+    left: 0;
+    top: 10%;
+
+
+
+}
