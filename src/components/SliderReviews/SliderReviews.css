@@ -1,0 +1,26 @@
+.slider__reviews{
+    margin: 0 auto;
+    width: 700px;
+}
+.slider__item{
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 40px;
+
+    outline: none;
+}
+.slider__item-text{
+    text-align: justify;
+    margin-bottom: 30px;
+
+    font-size: 15px;
+}
+.slider__item-author {
+    margin-bottom: 15px;
+
+    font-size: 18px;
+}
+.slider__item-size{
+    font-size: 15px;
+}

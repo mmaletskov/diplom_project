@@ -1,0 +1,32 @@
+.form__inner-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;  
+
+    text-align: center;
+}
+.form__inner-desc h3{
+    font-family: var(--monts);
+    font-weight: 400;
+    font-size: 24px;
+}
+.form{
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+}
+.form__input{
+    padding: 10px 15px;
+    border-bottom: 1px solid black;
+}
+.form__input::placeholder{
+    font-family: var(--monts);
+}
+.form__button{
+    padding: 15px 40px;
+    background-color: black;
+    color: white;
+    font-family: var(--monts);
+}

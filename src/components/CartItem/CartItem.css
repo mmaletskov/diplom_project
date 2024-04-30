@@ -1,0 +1,51 @@
+.cart__wrapper-item{
+    display: flex;
+    gap: 30px;
+    /* оставить либо так */
+    /* align-items: flex-start; */
+    /* либо вот так */
+    align-items: center;
+
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+
+    font-family: var(--monts);
+}
+.wrapper__item-image{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+.item__image{
+    width: 150px;
+}
+.wrapper__item-descr{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.wrapper__item-delete{
+    background-color: red;
+    padding: 10px 20px;
+    display: inline-block;
+    color: white;
+}
+.control__btns{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 22px;
+}
+.control__btns img{
+    width: 30px;
+}
+.descr__title{
+    font-size: 20px;
+    word-break:keep-all;
+}
+.descr__price{
+    font-size: 22px;
+    font-weight: 500;
+}

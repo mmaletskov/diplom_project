@@ -1,0 +1,60 @@
+.item__page {
+  margin: 100px 0;
+  width: 100%;
+  font-family: var(--monts);
+}
+.item__page-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+.item__details-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+.item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+}
+.details__content-image{
+    width: 400px;
+}
+.details__content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.text__title {
+  font-size: 24px;
+}
+.text__price {
+  font-size: 24px;
+}
+.text__count{
+    font-size: 16px;
+}
+.text__country{
+    font-size: 16px;
+}
+.item__details-desc {
+  max-width: 800px;
+  text-align: justify;
+  line-height: 1.5em;
+}
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.item__reviews{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+}

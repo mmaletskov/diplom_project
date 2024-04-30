@@ -1,0 +1,18 @@
+.reg{
+    margin: 100px 0;
+}
+.reg__inner{
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    width: 100%;   
+}
+.reg__inner img{
+    width: 40%; 
+    object-fit: cover;
+}
+.reg__inner-form{
+    width: 40%;
+    background-color: white;
+    padding: 25px 50px;
+}

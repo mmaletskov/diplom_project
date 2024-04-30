@@ -1,42 +1,145 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#page-wrap {
   text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+/* Individual item */
+.bm-item {
+display: inline-block;
+
+/* Our sidebar item styling */
+text-decoration: none;
+margin-bottom: 10px;
+color: #d1d1d1;
+transition: color 0.2s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Change color on hover */
+.bm-item:hover {
+color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bm-item:focus {
+outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* The rest copied directly from react-burger-menu docs */
+.bm-morph-shape {
+fill: #373a47;
 }
 
-.card {
-  padding: 2em;
+/* Position and sizing of burger button */
+.bm-burger-button {
+position:sticky;
+width: 36px;
+height: 30px;
+/* top: 20px; */
+
 }
 
-.read-the-docs {
-  color: #888;
-} */
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+height: 24px;
+width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+background: #888;
+}
+
+/* General sidebar styles */
+.bm-menu {
+background-color: #4E5B83;
+}
+
+.bm-menu a {
+color: white;
+/* font-size: 30px; */
+font-size: 20px;
+border-bottom: 1px solid transparent;
+}
+.bm-menu a:hover{
+  border-bottom: 1px solid white;
+}
+.bm-menu-wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.bm-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+fill: #373a47;
+}
+
+.bm-item{
+  display: block;
+  margin: 0 auto;
+}
+/* Wrapper for item list */
+.bm-item-list {
+color: white;
+text-align: center;
+font-family: var(--monts);
+display: flex;
+flex-direction: column;
+justify-content:center;
+gap: 30px;
+}
+
+.bm-item-list a {
+padding: 0.8em;
+}
+
+.bm-item-list a span {
+margin-left: 10px;
+font-weight: 700;
+}
+bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#side-bar h2 {
+  margin: 0 auto;
+  padding: 2em 1em;
+  color: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+}
+#side-bar h2 i {
+  margin-left: 0.2em;
+}
+#side-bar h2 span {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+#side-bar a {
+  padding: 1em;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+}
+#side-bar a span {
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+#side-bar a:hover,
+#side-bar a:focus {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0);
+  color: #b8b7ad;
+}
+

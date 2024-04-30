@@ -1,12 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header/Header'
-import Banner from './components/Banner/Banner'
+import Start from './pages/Start/Start'
 import Footer from './components/Footer/Footer'
 import { Routes,Route } from 'react-router-dom'
-import Catalog from './components/Catalog/Catalog'
+import Catalog from './pages/Catalog/Catalog'
+import ItemPage from './pages/ItemPage/ItemPage'
+import Reg from './pages/Reg/Reg'
+import Auth from './pages/Auth/Auth'
+import Cart from './pages/Cart/Cart'
+import Profile from './pages/Profile/Profile'
 
 export default function App() {
 
@@ -14,8 +17,13 @@ export default function App() {
     <>
       <Header/>
       <Routes>
-        <Route path="/" element = { <Banner/> } />
+        <Route path="/" element = { <Start/> } />
         <Route path="/catalog" element = { <Catalog/> } />
+        <Route path="/itemPage" element = { <ItemPage/> } />
+        <Route path="/reg" element = { <Reg/> } />
+        <Route path="/auth" element = { <Auth/> } />
+        <Route path="/cart" element = { <Cart/> } />
+        <Route path="/profile" element = { <Profile/> } />
       </Routes>
       <Footer/>
     </>

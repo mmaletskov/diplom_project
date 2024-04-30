@@ -1,0 +1,124 @@
+.profile{
+    font-family: var(--monts);
+    margin: 100px 0;
+}
+.profile__inner{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+.profile__inner-header{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+    padding: 20px 30px;
+    background-color: #F3E6E6;
+}
+.header__bio{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+}
+.header__name{
+
+}
+.header__email {
+  
+}
+
+
+
+.profile__inner-details{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 40px;
+    background-color: #F3E6E6;
+
+    width: 530px;
+}
+.details__body{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.details__nav{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 35px;
+}
+.body__item{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+}
+
+.profile__inner-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.desc__summ{
+    display: flex;  
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 20px 30px;
+    background-color: #F3E6E6;
+}
+.desc__exit{
+    color: red;
+    font-size: 16px;
+}
+
+/* media */
+@media (max-width:940px) {
+    .profile__inner{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .profile__inner-desc{
+        order: 2;
+    }
+    .profile__inner-details{
+        order: 3;
+    }
+}
+@media (max-width:525px) {
+    .profile__inner{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .profile__inner-desc{
+        order: 3;
+    }
+    .profile__inner-details{
+        order: 2;
+    }
+    .profile__inner-header{
+        width: 100%;
+        flex-direction: row;
+        align-items: start;
+        font-size: 20px;
+    }
+    .profile__inner-desc{
+        width: 100%;
+    }
+    .desc__summ{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .desc__exit{
+        width: 100%;
+        background-color: red;
+        color: white;
+        padding: 20px 40px;
+    }
+}
+/* media-end */

@@ -16,6 +16,25 @@ a{
   color: inherit;
 }
 
+h1,h2,h3,h4,h5,h6{
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+input{
+  border: none;
+}
+input:focus{
+  outline: none;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 :root{
   --monts: "Montserrat Alternates", sans-serif;
   --italiana: "Italiana", sans-serif;
