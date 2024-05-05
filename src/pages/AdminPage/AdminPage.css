@@ -1,0 +1,115 @@
+.admin {
+  width: 100%;
+  font-family: var(--monts);
+  margin: 100px 0 300px 0;
+}
+.sidebar {
+  display: flex;
+  gap: 50px;
+}
+aside{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #4E5B83;
+  padding: 20px 30px;
+}
+
+.content{
+  display: none;
+}
+.show-content{
+  display: block;
+}
+.admin__info{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: white;
+}
+
+.admin__links{
+  display: flex;
+  flex-direction: column; 
+}
+.admin__link{
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+}
+.admin__link:hover{
+  background-color: white;
+  color: black;
+}
+.exit{
+  padding: 10px 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+}
+
+.content__wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+.content__wrapper h2{
+  font-size: 24px;
+}
+.user__list{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.list__item-desc{
+  display: flex;
+  gap: 20px;
+}
+.list__item-desc p{
+  font-size: 14px;
+}
+.user__list-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  background-color: white;
+  padding: 10px 20px;
+  flex-direction: column;
+}
+
+.user__list-delete{
+  padding: 15px 30px;
+  background-color: red;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.user__list-delete:hover{
+  padding: 15px 30px;
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+.list__item-buttons{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.list__item-button{
+  font-size: 14px;
+
+  padding: 15px 20px;
+  background-color: red;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.list__item-button:hover{
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+}
+
+

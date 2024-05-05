@@ -57,4 +57,37 @@
     flex-direction: column;
     gap: 50px;
     text-align: center;
+    width: 60%;
+    margin: 0 auto;
 }
+
+
+/* media */
+@media (max-width:700px) {
+  .item__details-content{
+    flex-direction: column;
+  }
+  .details__content-text{
+    text-align: center;
+  }
+  .slider__reviews{
+    width: 100%;
+  }
+  .item__reviews{
+    width: 100%;
+  }
+}
+@media (max-width:425px) {
+  .details__content-image{
+    width: 300px
+  }
+  .notice{
+    justify-content: center;
+  }
+}
+@media (max-width:320px) {
+  .item__details-desc{
+    font-size: 14px;
+  }
+}
+/* media-end */

@@ -1,0 +1,14 @@
+.active__button {
+  font-size: 14px;
+
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.active__button:hover {
+  background-color: white;
+  color:red;
+  border: 1px solid red;
+}

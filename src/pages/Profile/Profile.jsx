@@ -3,7 +3,7 @@ import './Profile.css'
 
 export default function Profile() {
   return (
-    <div>
+    <div id="page-wrap">
       <section className="profile">
         <div className="container">
             <div className="profile__inner">

@@ -1,8 +1,29 @@
+.auth{
+    margin: 100px 0;
+}
+.auth__inner{
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    width: 100%;   
+}
+.auth__inner img{
+    width: 40%; 
+    object-fit: cover;
+}
+.auth__inner-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    background-color: white;
+    padding: 25px 50px;
+}
 .form__inner-desc{
     display: flex;
     flex-direction: column;
     gap: 50px;  
-
+    
     text-align: center;
 }
 .form__inner-desc h3{
@@ -11,7 +32,7 @@
     font-size: 24px;
 }
 .form{
-    width: 255px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -25,8 +46,46 @@
     font-family: var(--monts);
 }
 .form__button{
-    padding: 15px 40px;
+    padding: 20px 40px;
     background-color: black;
     color: white;
     font-family: var(--monts);
+    border: 1px solid transparent;
+}
+.form__button:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+}
+
+@media (max-width:800px) {
+    .auth__inner{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .auth__inner-form{
+        width: 60%;
+        padding: 50px;
+    }
+    .auth__inner img{
+        width: 60%;
+    }
+}
+@media (max-width:425px) {
+    .auth__inner{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .auth__inner-form{
+        width: 100%;
+        padding: 30px;
+    }
+    .auth__inner img{
+        width: 100%;
+    }
+    .form{
+        width: 100%;
+    }
+
 }

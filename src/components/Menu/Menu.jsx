@@ -9,7 +9,7 @@ export default props => {
       <Link to="/catalog" >Каталог</Link>
       <Link to="/profile" >Профиль</Link>
 
-      <img src="/public/Header/logo.svg" alt="" />
+      {/* <img src="/public/Header/logo.svg" alt="" /> */}
     </Menu>
   );
 };

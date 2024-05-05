@@ -12,7 +12,7 @@ export default function SliderReviews() {
         fade: true,
         infinite: true,
         autoplay:true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
         waitForAnimate: false

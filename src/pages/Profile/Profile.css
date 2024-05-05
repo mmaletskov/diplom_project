@@ -1,6 +1,6 @@
 .profile{
     font-family: var(--monts);
-    margin: 100px 0;
+    margin: 150px 0;
 }
 .profile__inner{
     display: flex;
