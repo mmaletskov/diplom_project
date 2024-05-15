@@ -7,6 +7,7 @@ import Modalka from '../../components/Modalka/Modalka'
 import SliderReviews from '../../components/SliderReviews/SliderReviews'
 import Button from '../../components/Button/Button'
 import 'animate.css';
+import ModalkaReviews from '../../components/ModalkaReviews/ModalkaReviews';
 
 export default function ItemPage() {
   const {firebaseId} = useParams();
@@ -31,7 +32,8 @@ export default function ItemPage() {
                 {tovar && (
                     <>
                    <div className="item__details-content">
-                        <img className="details__content-image" src="/public/ItemPage/image-one.jpg" alt="" />
+                        {/* <img className="details__content-image" src="/public/ItemPage/image-one.jpg" alt="" /> */}
+                        <img className='details__content-image' src={tovar.image} alt="" />
                       
                            <div className="details__content-text">
                             <h4 className="text__title">{tovar.title}</h4>
@@ -65,7 +67,7 @@ export default function ItemPage() {
                 
                 <div className="item__reviews">
                     <SliderReviews/>
-                    <Button title="Написать отзыв"/>
+                    <ModalkaReviews/>
                 </div>
             </div>
         </div>

@@ -3,6 +3,12 @@ import app from "../../firebase";
 import { getDatabase, ref, set, get } from "firebase/database";
 import { useParams, useNavigate } from "react-router-dom";
 import "./FormEditTovar.css";
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 
 export default function FormEditTovar() {
   const navigate = useNavigate();
@@ -14,8 +20,22 @@ export default function FormEditTovar() {
   let [inputValue4, setInputValue4] = useState("");
   let [inputValue5, setInputValue5] = useState("");
   let [inputValue6, setInputValue6] = useState("");
+  let [imageUpload, setImageUpload] = useState(null);
 
-  
+  const uploadFile = async () => {
+    if (!imageUpload) return;
+
+    const imageDb = getStorage();
+    const imageRef = storageRef(
+      imageDb,
+      `images/catalogImages/${imageUpload.name}`
+    );
+    const snapshot = await uploadBytes(imageRef, imageUpload);
+    const downloadURL = await getDownloadURL(snapshot.ref);
+
+    return downloadURL;
+  };
+
   const [category, setCategory] = useState([]);
 
   const getCategory = async () => {
@@ -47,6 +67,7 @@ export default function FormEditTovar() {
         setInputValue4(targetObject.count);
         setInputValue5(targetObject.country);
         setInputValue6(targetObject.category);
+        setImageUpload(targetObject.image);
       } else {
         alert("error");
       }
@@ -54,9 +75,10 @@ export default function FormEditTovar() {
     fetchData();
   }, [firebaseId]);
 
-  const overwriteData = async () => {
+  const overwriteData = async (image) => {
     const db = getDatabase(app);
     const newDocRef = ref(db, "tovars/" + firebaseId);
+    const imageUrl = await uploadFile(image);
     set(newDocRef, {
       title: inputValue1,
       descr: inputValue2,
@@ -64,6 +86,7 @@ export default function FormEditTovar() {
       count: inputValue4,
       country: inputValue5,
       category: inputValue6,
+      image: imageUrl,
     })
       .then(() => {
         alert("data save successfully");
@@ -126,10 +149,16 @@ export default function FormEditTovar() {
                   onChange={(e) => setInputValue6(e.target.value)}
                   value={inputValue6}
                 >
-                 {category.map((item) => {
-                      return <option>{item.categoryName}</option>;
-                    })}
+                  {category.map((item) => {
+                    return <option>{item.categoryName}</option>;
+                  })}
                 </select>
+
+                <input
+                  type="file"
+                  onChange={(e) => setImageUpload(e.target.files[0])}
+                />
+                <button onClick={uploadFile}>Upload</button>
 
                 <button onClick={overwriteData}>Save</button>
               </div>

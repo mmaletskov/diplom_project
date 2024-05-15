@@ -10,8 +10,6 @@ import './AddCateg.css'
 
 export default function AddCateg() {
 
-  const navigate = useNavigate();
-
   let[inputValue1, setInputValue1] = useState("");
 
   const saveData = async() => {

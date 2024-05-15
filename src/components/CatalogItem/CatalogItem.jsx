@@ -6,7 +6,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import app from "../../firebase";
 
 
-export default function CatalogItem({title,price}) {
+export default function CatalogItem({title,price,image}) {
 
   const [tovars, setTovars] = useState([]);
 
@@ -23,7 +23,8 @@ export default function CatalogItem({title,price}) {
   return (
     <>
     <div className="card__item"> 
-    <img className="card__item-image" src="/public/Catalog/image-one.jpg" alt="" />
+    {/* <img className="card__item-image" src="/public/Catalog/image-one.jpg" alt="" /> */}
+    <img className="card__item-image" src={image} alt="" />
         <div className="card__item-title">
             <p>{title}</p>
             <p>{price} ₽</p>

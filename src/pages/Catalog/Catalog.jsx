@@ -4,11 +4,7 @@ import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import {
   getDatabase,
   ref,
-  get,
-  onValue,
-  query,
-  orderByChild,
-  equalTo,
+  get
 } from "firebase/database";
 import app from "../../firebase";
 import { Link } from "react-router-dom";
@@ -21,8 +17,8 @@ export default function Catalog() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const fetchTovars = async () => {
+
+    async function fetchTovars(){
       const db = getDatabase(app);
       const dbRef = ref(db, "tovars");
       const snapshot = await get(dbRef);
@@ -46,7 +42,8 @@ export default function Catalog() {
       } else {
         alert("error");
       }
-    };
+    }
+    useEffect(() => {
     fetchTovars();
   }, []);
 
@@ -96,7 +93,8 @@ export default function Catalog() {
                       key={index}
                       onClick={() => handleCategoryFilter(category)}
                     >
-                      {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+                      {category}
+                      {/* {category.charAt(0).toUpperCase() + category.slice(1)}{" "} */}
                       {/* Приводим первую букву к верхнему регистру */}
                     </button>
                   )

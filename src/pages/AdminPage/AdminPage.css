@@ -5,6 +5,7 @@
 }
 .sidebar {
   display: flex;
+  align-items: flex-start;
   gap: 50px;
 }
 aside{
@@ -54,16 +55,22 @@ aside{
   gap: 25px;
   width: 100%;
 }
-.content__wrapper h2{
+.content__wrapper-title{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.content__wrapper-title h2{
   font-size: 24px;
 }
 .user__list{
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
 }
 .list__item-desc{
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 .list__item-desc p{
@@ -113,3 +120,19 @@ aside{
 }
 
 
+.category__items{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.category__item{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+}
+.category__item-btns{
+  display: flex;
+  gap: 20px;
+}

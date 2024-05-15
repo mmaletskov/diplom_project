@@ -16,5 +16,6 @@
 }
 .card__item-image{
     width: 200px;
+    height: 240px;
     margin-bottom: 20px;
 }
