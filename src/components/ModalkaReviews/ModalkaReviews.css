@@ -12,3 +12,46 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.button-open{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.modal-window-review{
+    width: 40%;
+    height: auto;
+    background-color: white;
+    margin: 100px auto;
+    padding: 20px 40px 40px 40px;
+}
+.ReactModal__Overlay {
+    opacity: 0;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+.md-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 30px;
+}
+.title{
+    font-family: var(--monts);
+    font-weight: 400;
+    font-size: 22px;
+}
+.md-body img{
+    width: 100%;
+}
+.button-close{
+    background-color: transparent;
+    border: none;
+}

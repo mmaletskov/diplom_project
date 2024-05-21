@@ -12,7 +12,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import {
   getStorage,
   uploadBytes,
@@ -20,13 +20,10 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { auth } from "../../firebase";
-import "./FormReg.css";
+import "./EditProfile.css";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-export default function FormReg() {
-
+export default function EditProfile() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -51,12 +48,27 @@ export default function FormReg() {
     width: 1,
   });
 
-  const [name, setName] = useState("");
-  // const [surname, setSurname] = useState("");
+  //   const [name, setName] = useState("");
+  //   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
   const [preview, setPreview] = useState(null);
+
+  const [displayName, setDisplayName] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEmail(user.email);
+        setDisplayName(user.displayName);
+      } else {
+        navigate("/auth");
+      }
+    });
+
+    return unsubscribe;
+  }, []);
 
   const uploadFile = async () => {
     if (!imageUpload) return;
@@ -69,34 +81,52 @@ export default function FormReg() {
     return downloadURL;
   };
 
-  const handleSignUp = async (image) => {
+  const updateDateUser = async (image) => {
     const imageUrl = await uploadFile(image);
-    await createUserWithEmailAndPassword(auth, email, password)
+    updateProfile(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: `${name}`,
-          photoURL: imageUrl,
+            displayName : `${displayName}`,
+            photoURL : imageUrl,
         })
-          .then(() => {
-            // Успешно обновлено имя пользователя
-            console.log("Имя пользователя успешно установлено");
-            navigate("/auth");
-          })
-          .catch((error) => {
-            // Ошибка обновления имени пользователя
-            console.error("Ошибка при установке имени пользователя: ", error);
-            toast.error("Ошибка при установке имени пользователя")
-          });
+        .then(() => {
+        // Успешно обновлено имя пользователя
+        console.log("Имя пользователя успешно установлено");
+        navigate("/auth");
       })
+    })
       .catch((error) => {
-        // Ошибка регистрации пользователя
-        console.error("Ошибка регистрации пользователя: ", error);
-        toast.error("Ошибка регистрации пользователя",{
-          position:"top-center"
-        });
+        // An error occurred
+        // ...
+        console.error("Ошибка при установке имени пользователя: ", error);
       });
   };
+
+  //   const handleSignUp = async (image) => {
+  //     const imageUrl = await uploadFile(image);
+  //     await createUserWithEmailAndPassword(auth, email, password)
+  //       .then((userCredential) => {
+  //         const user = userCredential.user;
+  //         updateProfile(user, {
+  //           displayName: `${name}`,
+  //           photoURL: imageUrl,
+  //         })
+  //           .then(() => {
+  //             // Успешно обновлено имя пользователя
+  //             console.log("Имя пользователя успешно установлено");
+  //             navigate("/auth");
+  //           })
+  //           .catch((error) => {
+  //             // Ошибка обновления имени пользователя
+  //             console.error("Ошибка при установке имени пользователя: ", error);
+  //           });
+  //       })
+  //       .catch((error) => {
+  //         // Ошибка регистрации пользователя
+  //         console.error("Ошибка регистрации пользователя: ", error);
+  //       });
+  //   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -115,7 +145,6 @@ export default function FormReg() {
 
   return (
     <div>
-      <ToastContainer/>
       <section className="reg">
         <div className="container">
           <div className="reg__inner">
@@ -158,7 +187,7 @@ export default function FormReg() {
             </div>
             <div className="reg__inner-form">
               <div className="form__inner-desc">
-                <h3>Регистрация</h3>
+                <h3>Редактирование профиля</h3>
                 <Box
                   component="form"
                   sx={{
@@ -171,16 +200,9 @@ export default function FormReg() {
                     id="standard-basic"
                     label="ФИО"
                     variant="standard"
-                    defaultValue={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
                   />
-                  {/* <TextField
-                    id="standard-basic"
-                    label="Фамилия"
-                    variant="standard"
-                    defaultValue={surname}
-                    onChange={(e) => setSurname(e.target.value)}
-                  /> */}
                   <TextField
                     id="standard-basic"
                     label="Почта"
@@ -233,7 +255,7 @@ export default function FormReg() {
                 </Box>
                 <Button
                   type="submit"
-                  onClick={handleSignUp}
+                  onClick={updateDateUser}
                   fullWidth
                   variant="contained"
                   sx={{

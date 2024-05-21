@@ -13,9 +13,10 @@ export default function Header() {
 
               <Menu customBurgerIcon={ <img src="/public/Header/burger_open.svg" /> } pageWrapId={ "page-wrap" } />
 
-                <div className="logo">
+                {/* <div className="logo">
                     <img src="public/Header/logo.svg" alt="" />
-                </div>
+                </div> */}
+                <Link to="/"> <img src="public/Header/logo.svg" alt="" /></Link>
 
                 <Link to="/cart" className="card">
                     <img src="public/Header/card.svg" alt="" />

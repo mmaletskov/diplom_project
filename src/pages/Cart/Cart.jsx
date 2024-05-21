@@ -24,7 +24,7 @@ export default function Cart() {
                 <div className="panel__price">
                   <div className="total__price">
                     <h4>Сумма:</h4>
-                    <h4>24 999</h4>
+                    <h4>24 999 ₽</h4>
                   </div>
                   <div className="total__discount">
                     <h4>Скидка:</h4>

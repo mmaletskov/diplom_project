@@ -13,8 +13,10 @@ import Cart from './pages/Cart/Cart'
 import Profile from './pages/Profile/Profile'
 import AdminPage from './pages/AdminPage/AdminPage'
 import AddTovar from './pages/AddTovar/AddTovar'
-import AddCateg from './components/AddCateg/AddCateg'
+import AddCateg from './pages/AddCateg/AddCateg'
 import EditTovar from './pages/EditTovar/EditTovar'
+import EditProfile from './components/EditProfile/EditProfile'
+import EditCateg from './components/EditCateg/FormEditCateg'
 
 
 export default function App() {
@@ -30,9 +32,11 @@ export default function App() {
         <Route path="/auth" element = { <Auth/> } />
         <Route path="/cart" element = { <Cart/> } />
         <Route path="/profile" element = { <Profile/> } />
+        <Route path="/editProfile" element = { <EditProfile/> } />
         <Route path="/admin" element = { <AdminPage/> } />
         <Route path="/add" element = { <AddTovar/> } />
         <Route path="/edit/:firebaseId" element = { <EditTovar/> } />
+        <Route path="/editCateg/:firebaseId" element = { <EditCateg/> } />
         <Route path="/addCateg" element = { <AddCateg/> } />
       </Routes>
       <Footer/>

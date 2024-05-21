@@ -7,6 +7,15 @@
     justify-content: center;
     width: 100%;   
 }
+.preview__side{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+    background-color: white;
+}
 .form__tovar-inner img{
     width: 30%; 
     object-fit: cover;

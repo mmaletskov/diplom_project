@@ -1,6 +1,7 @@
 footer{
     background-color: #4E5B83;
     /* background-color: black; */
+    font-family: var(--monts);
 }
 .footer__inner{
     display: flex;
@@ -8,10 +9,15 @@ footer{
     justify-content: space-between;
     padding: 30px 0;
 }
-.menu__list{
+.author__link{
+    font-size: 13px;
+    color: white;
+}
+/* .menu__list{
     display: flex;
     align-items: center;
     gap: 15px;
     font-family: var(--monts);
     font-size: 14px;
-}
+    color: white;
+} */

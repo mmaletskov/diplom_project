@@ -14,6 +14,7 @@ export default function Catalog() {
   const [tovars, setTovars] = useState([]);
   const [filteredTovars, setFilteredTovars] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
   const [sortOrder, setSortOrder] = useState("asc");
   const [categories, setCategories] = useState([]);
 
@@ -51,7 +52,7 @@ export default function Catalog() {
     const filtered = tovars.filter(
       (tovar) =>
         tovar.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        tovar.descr.toLowerCase().includes(searchTerm.toLowerCase())
+        tovar.descr .toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTovars(filtered);
   }, [searchTerm, tovars]);
@@ -125,13 +126,20 @@ export default function Catalog() {
             <div className="catalog__list">
               {filteredTovars.length ? (
                 filteredTovars.map((item, index) => {
+                  if(item.count > 1){
                   return (
+                  
                     <li key={index}>
                       <Link to={`/item/${item.tovarId}`}>
                         <CatalogItem key={index} {...item} />
                       </Link>
                     </li>
+                
                   );
+                }
+                else{
+                  alert("товара нет в наличии")
+                }
                 })
               ) : (
                 <h2>

@@ -31,6 +31,15 @@
     padding: 10px 20px;
     display: inline-block;
     color: white;
+    border: 1px solid transparent;
+    transition: all .2s linear;
+}
+.wrapper__item-delete:hover{
+    background-color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    color: red;
+    border: 1px solid red;
 }
 .control__btns{
     display: flex;
@@ -44,6 +53,9 @@
 .descr__title{
     font-size: 20px;
     word-break:keep-all;
+}
+.descr__size{
+    font-size: 18px;
 }
 .descr__price{
     font-size: 22px;

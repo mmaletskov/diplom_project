@@ -7,9 +7,20 @@
     justify-content: center;
     width: 100%;   
 }
-.reg__inner img{
-    width: 40%; 
+/* .reg__inner img{
+    width: 50%; 
     object-fit: cover;
+} */
+.reg__inner-image{
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.reg__inner-image img{
+    width: 80%;
 }
 .reg__inner-form{
     width: 40%;

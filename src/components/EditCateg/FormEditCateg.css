@@ -1,0 +1,10 @@
+.form__categ{
+    margin: 200px 0;
+}
+.form__categ-inner{
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    width: 100%;   
+    /* height: 650px; */
+}

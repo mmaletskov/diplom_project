@@ -7,7 +7,6 @@
 html{
   background-color: #F7F2F2;
 }
-
 ul,li{
   list-style: none;
 }
@@ -45,7 +44,6 @@ button{
   margin: 0 auto;
   padding: 0 15px;
 }
-
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

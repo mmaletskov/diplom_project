@@ -1,18 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Profile.css'
+import { useNavigate } from 'react-router-dom'
+import { auth } from '../../firebase';
+import { onAuthStateChanged, signOut} from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState();
+  const [displayName, setDisplayName] = useState();
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if(user){
+        toast.success("Успешная авторизация", {
+          position: "top-center",
+        })
+        setEmail(user.email);
+        setDisplayName(user.displayName);
+        setImage(user.photoURL);
+      }
+      else{
+        navigate("/auth");
+      }
+    })
+
+    return unsubscribe;
+  }, []);
+
+  
+  const handleClick = () => {
+    signOut(auth).then(val=>{
+        navigate("/auth");
+    })
+}
+  
   return (
     <div id="page-wrap">
+      <ToastContainer/>
       <section className="profile">
         <div className="container">
             <div className="profile__inner">
 
               <div className="profile__inner-header">
-                <img src="/public/Profile/avatar.png" alt="" />
+                <img className="avatar__image" src={image} alt="" />
                 <div className="header__bio">
-                  <p className="header__name">Иванов Иван</p>
-                  <p className="header__email">ivanov@mail.ru</p>
+                  <p className="header__name">{displayName}</p>
+                  <p className="header__email">{email}</p>
                   <button><img className="header__edit" src="/public/Profile/edit.svg" alt=""/></button>
                 </div>
               </div>
@@ -49,7 +87,7 @@ export default function Profile() {
                   <h3 className="summ__title">Общая сумма выкупа</h3>
                   <h3 className="summ__body">74 997</h3>
                 </div>
-                <button className="desc__exit">Выйти из аккаунта</button>
+                <button onClick={handleClick} className="desc__exit">Выйти из аккаунта</button>
               </div>
             </div>
         </div>

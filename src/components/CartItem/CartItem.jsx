@@ -17,6 +17,7 @@ export default function CartItem() {
         
         <div className="wrapper__item-descr">
           <h4 className="descr__title">Пиджак классический мужской</h4>
+          <h4 className="descr__size">Размер: М</h4>
           <h3 className="descr__price">24 999 ₽</h3>
           <div className="control__btns">
             <img src="/public/Cart/minus.svg" alt="" />

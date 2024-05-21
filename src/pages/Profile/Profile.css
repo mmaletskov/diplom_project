@@ -16,6 +16,10 @@
     padding: 20px 30px;
     background-color: #F3E6E6;
 }
+.avatar__image{
+    width: 160px;
+    /* margin: 0 auto; */
+}
 .header__bio{
     display: flex;
     flex-direction: column;
@@ -23,7 +27,10 @@
     gap: 15px;
 }
 .header__name{
-
+    font-size: 16px;
+    text-align: left;
+    max-width: 100px;
+    line-height: 25px;
 }
 .header__email {
   
@@ -61,7 +68,7 @@
 .profile__inner-desc{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
 }
 .desc__summ{
     display: flex;  
@@ -72,8 +79,17 @@
     background-color: #F3E6E6;
 }
 .desc__exit{
-    color: red;
+    border: 1px solid transparent;
+    background-color: red;
+    color: white;
     font-size: 16px;
+    padding: 15px 20px;
+}
+.desc__exit:hover{
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
 }
 
 /* media */

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./AdminPage.css";
 import AdminButton from "../../components/AdminButton/AdminButton";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 import {
   getDatabase,
   ref,
@@ -16,6 +18,7 @@ import {
 } from "firebase/database";
 import app from "../../firebase";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function AdminPage() {
   const [toggle, setToggle] = useState(1);
@@ -28,8 +31,9 @@ export default function AdminPage() {
   const [filteredTovars, setFilteredTovars] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [categories, setCategories] = useState([]);
-  // const [categ, setCateg] = useState([]);
-  const [inputValue1, setInputValue1] = useState("");
+  const [categ, setCateg] = useState([])
+  // const [inputValue1, setInputValue1] = useState("");
+  const [tovarCount, setTovarCount] = useState(0);
 
   async function fetchTovars() {
     const db = getDatabase(app);
@@ -57,6 +61,9 @@ export default function AdminPage() {
       alert("error");
     }
   }
+  useEffect(()=>{
+    fetchTovars();
+  }, [])
 
   const deleteTovar = async (tovarIdParam) => {
     const db = getDatabase(app);
@@ -65,27 +72,23 @@ export default function AdminPage() {
     window.location.reload();
   };
 
+
+
   useEffect(() => {
-    fetchTovars();
+    const fecthTovarsCount = async () => {
+      try {
+        const dbCount = getDatabase(app);
+        const tovarRef = ref(dbCount, "tovars");
+        const snapshotCount = await get(tovarRef);
+        const count = snapshotCount.size;
+        setTovarCount(count);
+      } catch {
+        console.error(error);
+      }
+    };
+
+    fecthTovarsCount();
   }, []);
-
-  // async function fetchCategories() {
-  //   const db = getDatabase(app);
-  //   const categoriesRef = ref(db, 'category');
-  //   onValue(categoriesRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     if (data) {
-  //       const categoryList = Object.values(data);
-  //       setCategories(categoryList);
-  //     } else {
-  //       console.log('No categories available');
-  //     }
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   fetchCategories();
-  // }, []);
 
   const handleCategoryFilter = (category) => {
     if (category === "all") {
@@ -108,28 +111,37 @@ export default function AdminPage() {
     setFilteredTovars(sortedTovars);
   };
 
-  const saveData = async () => {
-    const dbCat = getDatabase(app);
-    const newDocRef = push(ref(dbCat, "category"));
-    set(newDocRef, {
-      categoryName: inputValue1,
-    })
-      .then(() => {
-        alert("success");
-      })
-      .catch((error) => {
-        alert("error", error.message);
-      });
-  };
-
   const deleteCateg = async (categIdParam) => {
     const dbCat = getDatabase(app);
     const dbCatRef = ref(dbCat, "category/" + categIdParam);
     await remove(dbCatRef);
     window.location.reload();
   };
+
+
+
+  async function fetchCateg(){
+    const dbCateg = getDatabase(app);
+    const dbCategRef = ref(dbCateg, "category");
+    const snapshot = await get(dbCategRef);
+
+    if (snapshot.exists()) {
+      const myData = snapshot.val();
+      const temporaryArray = Object.keys(myData).map((myFireId) => {
+        return {
+          ...myData[myFireId],
+          categId: myFireId,
+        };
+      });
+      setCateg(temporaryArray);
+  }
+}
+useEffect(()=>{
+  fetchCateg();
+}, [])
   return (
     <div>
+      <ToastContainer/>
       <section className="admin">
         <div className="container">
           <div className="sidebar">
@@ -143,21 +155,21 @@ export default function AdminPage() {
               </div>
               <hr />
               <ul className="admin__links">
-                <li className="admin__link" onClick={() => updateToggle(1)}>
+                <button className="admin__link" onClick={() => updateToggle(1)}>
                   Список пользователей
-                </li>
-                <li className="admin__link" onClick={() => updateToggle(2)}>
+                </button>
+                <button className="admin__link" onClick={() => updateToggle(2)}>
                   Заказы
-                </li>
-                <li className="admin__link" onClick={() => updateToggle(3)}>
+                </button>
+                <button className="admin__link" onClick={() => updateToggle(3)}>
                   Общая статистика
-                </li>
-                <li className="admin__link" onClick={() => updateToggle(4)}>
+                </button>
+                <button className="admin__link" onClick={() => updateToggle(4)}>
                   Товары
-                </li>
-                <li className="admin__link" onClick={() => updateToggle(5)}>
+                </button>
+                <button className="admin__link" onClick={() => updateToggle(5)}>
                   Категории
-                </li>
+                </button>
               </ul>
               <button className="exit">Выйти из системы</button>
             </aside>
@@ -243,10 +255,47 @@ export default function AdminPage() {
                   </div>
                 </div>
               </div>
-              <div className={toggle === 3 ? "show-content" : "content"}>3</div>
+              <div className={toggle === 3 ? "show-content" : "content"}>
+                <div className="content__wrapper">
+                  <div className="content__wrapper-title">
+                    <h2>Общая статистика</h2>
+                  </div>
+                  <div className="content__wrapper-info">
+                    <div className="content__wrapper-count">
+                      <p>Количество товаров</p>
+                      <h4>{tovarCount}</h4>
+                    </div>
+                    <div className="content__wrapper-count">
+                      <p>Количество пользователей</p>
+                      <h4>{tovarCount}</h4>
+                    </div>
+                    <div className="content__wrapper-count">
+                      <p>Количество пользователей</p>
+                      <h4>{tovarCount}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className={toggle === 4 ? "show-content" : "content"}>
                 <div className="content__wrapper">
-                  <h2>Товары</h2>
+                  <div className="content__wrapper-title">
+                    <h2>Товары</h2>
+                    {/* <AdminButton title="Добавить товар" /> */}
+                    <Link to="/add">
+                      <Fab
+                        color="primary"
+                        aria-label="add"
+                        sx={{
+                          width: "40px",
+                          height: "40px",
+                          backgroundColor: "red",
+                          "&:hover": { backgroundColor: "white", color: "red" },
+                        }}
+                      >
+                        <AddIcon />
+                      </Fab>
+                    </Link>
+                  </div>
                   <div className="nav__links">
                     <button
                       className="nav__link"
@@ -290,7 +339,7 @@ export default function AdminPage() {
                             <p>{item.title}</p>
                             <p>{item.price} ₽</p>
                             <p>Кол-во: {item.count}</p>
-                            <p>размер: М</p>
+                            <p>размер: {item.size}</p>
                           </div>
                           <div className="list__item-buttons">
                             {/* <button onClick={()=>deleteTovar(item.tovarId)}>Удалить товар</button> */}
@@ -313,32 +362,45 @@ export default function AdminPage() {
                 <div className="content__wrapper">
                   <div className="content__wrapper-title">
                     <h2>Категории</h2>
-                    <div>
+                    <Link to="/addCateg">
+                      <Fab
+                        color="primary"
+                        aria-label="add"
+                        sx={{
+                          width: "40px",
+                          height: "40px",
+                          backgroundColor: "red",
+                          "&:hover": { backgroundColor: "white", color: "red" },
+                        }}
+                      >
+                       <AddIcon />
+                      </Fab>
+                      </Link>
+                    {/* <div>
                       <input
                         type="text"
                         value={inputValue1}
                         onChange={(e) => setInputValue1(e.target.value)}
                       />
                       <button onClick={saveData}>Save</button>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="category__items">
-                    
-                  
-                    {/* {categories.map((category, index) => (
+                    {categ.map((category) => (
                       <div className="category__item">
-                        <li>{category}</li>
+                        {category.categoryName}
+                        {/* <li>{categ}</li> */}
                         <div className="category__item-btns">
                           <AdminButton
                             title="Удалить"
                             onClick={() => deleteCateg(category.categId)}
                           />
-                          <Link to={`/edit/${category.tovarId}`}>
+                          <Link to={`/editCateg/${category.categId}`}>
                             <AdminButton title="Редакировать" />
                           </Link>
                         </div>
                       </div>
-                    ))} */}
+                    ))}
                   </div>
                 </div>
               </div>

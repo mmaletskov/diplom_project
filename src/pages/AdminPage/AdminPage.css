@@ -37,8 +37,13 @@ aside{
   padding: 10px 20px;
   color: white;
   cursor: pointer;
+  text-align: left;
 }
 .admin__link:hover{
+  background-color: white;
+  color: black;
+}
+.admin__link:focus{
   background-color: white;
   color: black;
 }
@@ -55,13 +60,31 @@ aside{
   gap: 25px;
   width: 100%;
 }
+.content__wrapper-info{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
 .content__wrapper-title{
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
 }
 .content__wrapper-title h2{
   font-size: 24px;
+}
+.content__wrapper-count{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  background-color: white;
+  padding: 20px 40px;
+}
+.content__wrapper-count h4{
+  font-size: 32px;
+  font-weight: 500;
 }
 .user__list{
   display: grid;
@@ -121,8 +144,8 @@ aside{
 
 
 .category__items{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
   gap: 20px;
 }
 .category__item{

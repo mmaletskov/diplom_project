@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import app from "../../firebase";
 import { getDatabase, ref, set, get, onValue} from "firebase/database";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import './ItemPage.css'
 import Modalka from '../../components/Modalka/Modalka'
 import SliderReviews from '../../components/SliderReviews/SliderReviews'
@@ -13,6 +13,7 @@ export default function ItemPage() {
   const {firebaseId} = useParams();
 
   const [tovar, setTovar] = useState(null);
+  const [tovarCount, setTovarCount] = useState(0);
 
   useEffect(()=> {
     const db = getDatabase(app);
@@ -39,6 +40,7 @@ export default function ItemPage() {
                             <h4 className="text__title">{tovar.title}</h4>
                             <h3 className="text__price">{tovar.price} ₽</h3>
                             <h3 className="text__count">В наличии : {tovar.count} шт</h3>
+                            <h3 className="text__count">Размер : {tovar.size}</h3>
                             <h3 className="text__country">Страна изготовитель : {tovar.country}</h3>
                             <Modalka/>
                             <div className="notice">
